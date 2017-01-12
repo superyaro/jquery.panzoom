@@ -956,6 +956,12 @@
 			// Bind touchstart if either panning or zooming is enabled
 			if (!options.disablePan || !options.disableZoom) {
 				events[ str_start ] = function(e) {
+					// jQuery < 3 compatibility event fix (Chrome 55+)
+					if (e.pageX === undefined && e.pageY === undefined) {
+						e.pageX = e.originalEvent.pageX;
+						e.pageY = e.originalEvent.pageY;
+					}
+
 					var touches;
 					if (e.type === 'touchstart' ?
 						// Touch
@@ -1195,6 +1201,12 @@
 			setStart(event, touches);
 
 			var move = function(e) {
+				// jQuery < 3 compatibility event fix (Chrome 55+)
+				if (e.pageX === undefined && e.pageY === undefined) {
+					e.pageX = e.originalEvent.pageX;
+					e.pageY = e.originalEvent.pageY;
+				}
+
 				var coords;
 				e.preventDefault();
 				touches = e.touches || e.originalEvent.touches;
