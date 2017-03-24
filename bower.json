@@ -1,6 +1,6 @@
 {
   "name": "nis.jquery.panzoom",
-  "version": "3.2.4",
+  "version": "3.2.4.3",
   "main": "dist/jquery.panzoom.js",
   "ignore": [
     "**/.*",
